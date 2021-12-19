@@ -1,0 +1,340 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.theme-default{
+    --bodyBackground: hsl(222, 26%, 31%);
+    --screenBackground: hsl(224, 36%, 15%);
+    --keypadBackground: hsl(223, 31%, 20%);
+    --toggleBackground: hsl(6, 63%, 50%);
+    --keyBackground: hsl(30, 25%, 89%);
+    --resetBackground: hsl(225, 21%, 49%);
+    --toggleBackgroundShadow: hsl(6, 70%, 34%);
+    --keyBackgroundShadow: hsl(28, 16%, 65%);
+    --resetBackgroundShadow: hsl(224, 28%, 35%);
+    --keyFontColor: hsl(221, 14%, 31%);
+    --resetFontColor: hsl(221, 14%, 31%);
+    --bodyFontColor: white;
+    --equalFontColor: white;
+}
+
+.theme-dark{
+    --bodyBackground: hsl(268, 75%, 9%);
+    --screenBackground: hsl(268, 71%, 12%);
+    --keypadBackground: hsl(268, 71%, 12%);
+    --toggleBackground: hsl(176, 100%, 44%);
+    --keyBackground: hsl(268, 47%, 21%);
+    --resetBackground: hsl(281, 89%, 26%);
+    --toggleBackgroundShadow: hsl(177, 92%, 70%);
+    --keyBackgroundShadow: hsl(290, 70%, 36%);
+    --resetBackgroundShadow: hsl(285, 91%, 52%);
+    --bodyFontColor: hsl(52, 100%, 62%);
+    --keyFontColor: hsl(52, 100%, 62%);
+    --resetFontColor: white;
+    --equalFontColor: hsl(198, 20%, 13%);
+}
+
+.theme-light{
+    --bodyBackground: hsl(0, 0%, 90%);
+    --screenBackground: white;
+    --keypadBackground: hsl(0, 5%, 81%);
+    --toggleBackground: hsl(25, 98%, 40%);
+    --keyBackground: hsl(45, 7%, 89%);
+    --resetBackground: hsl(185, 42%, 37%);
+    --toggleBackgroundShadow: hsl(25, 99%, 27%);
+    --keyBackgroundShadow: hsl(35, 11%, 61%);
+    --resetBackgroundShadow: hsl(185, 58%, 25%);
+    --keyFontColor: hsl(60, 10%, 19%);
+    --bodyFontColor: hsl(60, 10%, 19%);
+    --resetFontColor: hsl(60, 10%, 19%);
+    --equalFontColor: white;
+}
+
+body{
+    background-color: var(--bodyBackground);
+    font-family: 'Spartan', sans-serif;
+    color: var(--bodyFontColor);
+}
+
+#container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    width: 300px;
+    height: 100vh;
+}
+
+/*upper body and its components styling*/
+
+#upper-body{
+    display: flex;
+    height: 5rem;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.labels{
+    width: 3rem;
+    display: flex;
+    justify-content: space-evenly;
+    position: relative;
+    left: 5.5rem;
+    top: -1rem;
+    font-size: x-small;
+  }
+
+  .labels label{
+      cursor: pointer;
+  }
+
+input{
+    padding: 0;
+    margin: 0;
+    visibility: hidden;
+  }
+  
+  #radios{
+    height: 1.1rem;
+    padding: 3px 5px;
+    padding-right: 2px;
+    padding-bottom: 10px;
+    border-radius: 1rem;
+    background-color: var(--keypadBackground);
+    display: inline-block;
+  }
+  
+  input[type='radio']:after {
+          width: 13px;
+          height: 13px;
+          border-radius: 13px;
+          top: -2px;
+          left: -1px;
+          position: relative;
+          background-color: #d1d3d1;
+          content: '';
+          display: inline-block;
+          visibility: hidden;
+      }
+  
+      input[type='radio']:checked:after {
+          width: 13px;
+          height: 13px;
+          border-radius: 13px;
+          top: -2px;
+          left: -1px;
+          position: relative;
+          background-color: var(--toggleBackground);
+          content: '';
+          display: inline-block;
+          visibility: visible;
+      }
+  
+   
+  
+  
+
+#name{
+    font-size: x-large;
+}
+
+
+/*screen styling*/
+
+
+#screen{
+    background-color: var(--screenBackground);
+    height: 5rem;
+    width: 100%;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    overflow: hidden;
+    padding-right: 1rem;
+    font-size: x-large;
+}
+
+
+/*lower body / keys and keypad stying*/
+
+.keypad{
+    background-color: var(--keypadBackground);
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    display: grid;
+    /*Do some magic with grid*/
+    grid-template-columns: repeat(4,auto);
+    grid-template-rows: repeat(5,1fr);
+    row-gap: 1.5vh;
+    column-gap: 1.5vw;
+    color: hsl(221, 14%, 31%);
+
+}
+
+.keys{
+    background-color: var(--keyBackground);
+    height: 2rem;
+    /* text-align: center; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    color: var(--keyFontColor);
+}
+
+.keys:active {
+    transform: scale(0.9);
+    /* background-color: var(--keyActive); */
+    /* Scaling button to 0.98 to its original size */
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+    border: none;
+    /* Lowering the shadow */
+}
+
+.gray{
+    background-color: var(--resetBackground);
+    color: var(--resetFontColor);
+}
+
+#text{
+    position: relative;
+    right: -105px;
+    bottom: -1px;
+    font-size: x-small;
+}
+
+.gray:active {
+    /* transform: scale(0.9); */
+    /* background-color: hsl(225, 14%, 44%); */
+    /* Scaling button to 0.98 to its original size */
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+    /* Lowering the shadow */
+}
+
+.large-keys:active{
+    transform: scale(0.9);
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+    border: none;
+}
+
+/*code for making the text un selectable*/
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome and Opera */
+  }
+
+.orange:active{
+    /* background-color: hsl(6, 61%, 35%); */
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+}
+
+.orange{
+    background-color: var(--toggleBackground);
+    color: var(--equalFontColor);
+}
+
+.k1{
+    grid-column: 1/3;
+}
+
+.large-keys{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+.keys,.large-keys{
+    border-bottom: 3px solid var(--keyBackgroundShadow);
+    transition: 0.2s all;
+}
+
+.keys:hover,.large-keys:hover{
+    cursor: pointer;
+}
+
+
+
+.gray{
+    border-bottom: 3px solid var(--resetBackgroundShadow);
+    font-size: x-small;
+}
+
+.orange{
+    border-bottom: 3px solid var(--toggleBackgroundShadow);
+    font-size: x-small;
+}
+
+.k2{
+    grid-column: 3/5;
+}
+
+
+@media screen and (max-width: 375px){
+    #container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: auto;
+        width: 100%;
+        height: 100%;
+        padding: 1rem;
+    }
+
+    .keypad{
+        height: 400px;
+        padding: 1rem;
+    }
+    
+    #screen{
+        height: 15vh;
+        font-size: xx-large;
+    }
+
+    .keys{
+        height: 8vh;
+        width: 15vw;
+        font-size: x-large;
+    }
+    .gray{
+        font-size: large;
+    }
+    .orange{
+        font-size: large;
+    }
+    .large-keys{
+        width: 36vw;
+    }
+    #text{
+        position: relative;
+        left: 120px;
+        font-size: small;
+        bottom: -2px;
+    }
+    .labels{
+        width: 60px;
+        display: flex;
+        justify-content: space-evenly;
+        position: relative;
+        left: 95px;
+    }
+}
+
+
+
+/* 
+Very dark desaturated blue (main background): hsl(222, 26%, 31%)
+- Very dark desaturated blue (toggle background, keypad background): hsl(223, 31%, 20%)
+- Very dark desaturated blue (screen background): hsl(224, 36%, 15%) */
